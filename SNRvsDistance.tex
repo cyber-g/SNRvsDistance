@@ -1,0 +1,47 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{fullpage}
+\usepackage{amsmath}
+
+\author{Germain Pham}
+\title{Calcul du SNR en fonction de la distance}
+\date{Avril 2021}
+
+\begin{document}
+   \maketitle
+
+\begin{align}
+    SNR_{lin} 
+    &= \frac{P_{sig}}{P_{bruit}}\\
+    &= \frac{
+        P_{t}G_{t}G_{r}\left(\frac {\lambda }{4\pi d}\right)^{\alpha}
+    }{P_{bruit}}\\
+    &= \frac{P_{t}G_{t}G_{r}}{P_{bruit}} \left(\frac {\lambda }{4\pi }\right)^\alpha \left(\frac {1 }{ d^\alpha}\right)
+\end{align}
+
+d'où :
+\begin{align}
+    SNR_{dB} 
+    &= 10\log_{10}(SNR_{lin}) \\
+    &= 10\log_{10}\left( \frac{P_{t}G_{t}G_{r}}{P_{bruit}} \right) 
+    + 10 \alpha \log_{10}\left( \frac {\lambda }{4\pi } \right) 
+    - 10 \alpha \log_{10}(d)
+\end{align}
+
+Ainsi, on peut écrire : 
+\begin{equation}
+    SNR_{dB} = A \times X + B
+\end{equation}
+avec
+\begin{equation}
+    \begin{cases}
+        A = 10 \alpha\\
+        X = \log_{10}\left( \frac {\lambda }{4\pi } \right)  - \log_{10}(d)\\
+        B = 10\log_{10}\left( \frac{P_{t}G_{t}G_{r}}{P_{bruit}} \right) 
+    \end{cases}
+\end{equation}
+
+\end{document}
